@@ -1,5 +1,5 @@
 # SpamControl
-SpamControl will check for bad emails via a blacklist
+SpamControl will check for bad emails via a blacklist, Go app.
 
 ## Start
 
