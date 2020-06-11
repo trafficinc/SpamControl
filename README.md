@@ -18,9 +18,7 @@ $ go test -v
 
 2.) Run for Unix Socket: $ socat - UNIX-CONNECT:spam.sock in 1st console
 
-3.) $ go run main.go in 2nd console
-
-4.) Send test data: {"action":"url","value":"demo1@gmail.com"} 
+3.) $ go run main.go in 2nd console & Send test data: {"action":"url","value":"demo1@gmail.com"} 
 
 Or you can run the php script to use with a scripting language to use the service. 
 
