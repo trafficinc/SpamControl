@@ -1,5 +1,5 @@
 # SpamControl
-SpamControl will check for bad emails via a blacklist, Go app.
+SpamControl service, good for checking emails that aren't allowed during authentication via blacklist.
 
 ## Start
 
