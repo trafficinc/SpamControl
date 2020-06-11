@@ -40,18 +40,12 @@ func CheckSpamEmail(emailInput string) bool {
 		fmt.Println(err)
 	}
 
-	// fmt.Println("Successfully Opened banned emails.json")
-
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	// we initialize our Users array
 	var emails Emails
 
-	// we unmarshal our byteArray which contains our
-	// jsonFile's content into 'users' which we defined above
 	json.Unmarshal(byteValue, &emails)
 
-	// parse emailInput
 	var emailIn = GetSlug(emailInput)
 
 	badEmails := []badEmailCount{}
@@ -60,7 +54,6 @@ func CheckSpamEmail(emailInput string) bool {
 			badEmails = append(badEmails, badEmailCount{1})
 		}
 	}
-	//fmt.Println(len(badEmails) > 0)
 	defer jsonFile.Close()
 
 	if len(badEmails) > 0 {
@@ -77,7 +70,6 @@ func GetSlug(emailIn string) string {
 	return domain
 }
 
-// test func
 func dataHandler(c net.Conn) {
 	// we create a decoder that reads directly from the socket
 	d := json.NewDecoder(c)
@@ -114,8 +106,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Listen (UNIX socket): ", err)
 	}
-
-	//defer unixListener.Close()
+	
 	sigc := make(chan os.Signal, 1)
 	signal.Notify(sigc, os.Interrupt, syscall.SIGTERM)
 	go func(unixListener net.Listener, c chan os.Signal) {
@@ -131,8 +122,6 @@ func main() {
 			log.Fatal(err)
 			return
 		}
-		//fmt.Println(fd.LocalAddr())
 		go dataHandler(fd)
-		//fd.Close()
 	}
 }
